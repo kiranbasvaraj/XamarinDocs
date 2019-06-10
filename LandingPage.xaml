@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+              xmlns:template="clr-namespace:Track.Views.Templates" Title="Supervisor App"
+              xmlns:behavior="clr-namespace:Track.Converters;assembly=Track"
+              xmlns:cd="clr-namespace:Track.Views;assembly=Track"
+               xmlns:b="clr-namespace:Corcav.Behaviors;assembly=Corcav.Behaviors" x:Name="lpage"
+             x:Class="Track.Views.LandingPage" BackgroundColor="#414865">
+
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout"  Command="{Binding Logout}" Priority="0" Order="Primary"/>
+        <ToolbarItem x:Name="toolbar"  Order="Primary" Icon="ic_logout" Priority="0" Command="{Binding Logout}" />
+    </ContentPage.ToolbarItems>-->
+
+    <StackLayout Padding="10">
+        <StackLayout >
+            <cd:CardView x:Name="card">
+                
+            <Button BackgroundColor="Transparent" Text="Iam Don" HeightRequest="100"></Button>
+            </cd:CardView>
+            <cd:CardView x:Name="card1">
+
+                <Button BackgroundColor="Transparent" Text="Iam Don" HeightRequest="100"></Button>
+            </cd:CardView>
+            <cd:CardView x:Name="card2">
+
+                <Button BackgroundColor="Transparent" Text="Iam Don" HeightRequest="100"></Button>
+            </cd:CardView>
+            <cd:CardView x:Name="card3">
+
+                <Button BackgroundColor="Transparent" Text="Iam Don" HeightRequest="100"></Button>
+            </cd:CardView>
+            <Frame  CornerRadius="6"
+                             Padding="10"  >
+                <StackLayout>
+                    <StackLayout IsVisible="{Binding ListVisible}">
+                        <ListView  SeparatorVisibility="Default"  ItemsSource="{Binding RouteList}" 
+                      VerticalOptions="FillAndExpand" CachingStrategy="RecycleElement"
+                      HasUnevenRows="True" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <template:RouteTemplate>
+                                        </template:RouteTemplate>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <b:Interaction.Behaviors>
+                                <b:BehaviorCollection>
+                                    <b:EventToCommand EventName="ItemTapped" Command="{Binding Path=BindingContext.ItemTappedCommand, Source={x:Reference Name=lpage}}" PassEventArgument="True" />
+                                </b:BehaviorCollection>
+                            </b:Interaction.Behaviors>
+                        </ListView>
+                    </StackLayout>
+                    <StackLayout IsVisible="{Binding ListNotVisible}">
+                        <Label Text="No plans for today!" HorizontalOptions="CenterAndExpand" TextColor="Black" Margin="4,0,0,0" FontSize="Small" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+        <Label HeightRequest="40" Text="No Internet connection" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  BackgroundColor="Red" TextColor="White" FontSize="Small" IsVisible="{Binding IsNotConnected}">
+            <Label.Behaviors>
+                <behavior:SlideUpBehaviour />
+            </Label.Behaviors>
+        </Label>
+    </StackLayout>
+</ContentPage>

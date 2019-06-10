@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shape  xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" android:padding="10dp">
+  <solid android:id="@+id/msolid"  />
+  <corners android:bottomRightRadius="2dp" android:bottomLeftRadius="30dp" android:topLeftRadius="2dp" android:topRightRadius="30dp" />
+</shape>
