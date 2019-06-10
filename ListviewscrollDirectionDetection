@@ -1,0 +1,21 @@
+private int _lastItemAppearedIdx = 0;
+private bool _lastDirectionWasUp = false;
+ 
+private void ListView_OnItemDisappearing(object sender, ItemVisibilityEventArgs e)
+{
+    if (e.Item is AddressBookItem item)
+    {
+        var currentIdx = Model.Items.IndexOf(item);
+        if (currentIdx > _lastItemAppearedIdx)
+        {
+            if (_lastDirectionWasUp == false) fabCreateButton.FadeTo(.3, 250, Easing.Linear);
+            _lastDirectionWasUp = true;
+        }
+        else
+        {
+            if (_lastDirectionWasUp == true) fabCreateButton.FadeTo(1, 250, Easing.Linear);
+            _lastDirectionWasUp = false;
+        }
+        _lastItemAppearedIdx = currentIdx;
+    }
+}
