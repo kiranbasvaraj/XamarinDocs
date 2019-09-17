@@ -49,3 +49,25 @@ In Listview you can add animations for viewcells by adding Viewcell appearing ev
             }
 
         }
+
+
+
+Creating signing certificate for UWP apps 
+
+ 
+
+1.Run the below script to generate certificate: 
+
+New-SelfSignedCertificate -Type Custom -Subject "CN=Contoso Software, O=Contoso Corporation, C=US" -KeyUsage DigitalSignature -FriendlyName "Your friendly name goes here" -CertStoreLocation "Cert:\CurrentUser\My" -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.3", "2.5.29.19={text}") 
+
+ 
+
+Replace 1. C: with your company details  
+
+2. friendly name goes here: your company name.  
+
+ 
+
+2.VS will automatically select while generating app packages for UWP app. 
+
+3.follow the instructions giving by vs while signing here after. 
